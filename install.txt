@@ -12,3 +12,7 @@ apt-get install default-jdk
 #confluence and Jira postgres
 createuser -S -d -r -P -E confluenceuser
 createdb --owner confluenceuser --encoding utf8 confluence
+
+
+createuser -S -d -r -P -E jirauser
+createdb --owner jirauser --encoding utf8 jiradb
