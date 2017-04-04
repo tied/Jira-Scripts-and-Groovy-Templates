@@ -1,8 +1,6 @@
 #certbot-auto
 wget https://dl.eff.org/certbot-auto
 chmod a+x certbot-auto
-
-
 ./certbot-auto
 
 #java on Ubuntu
@@ -13,6 +11,6 @@ apt-get install default-jdk
 createuser -S -d -r -P -E confluenceuser
 createdb --owner confluenceuser --encoding utf8 confluence
 
-
+su - postgres
 createuser -S -d -r -P -E jirauser
 createdb --owner jirauser --encoding utf8 jiradb
