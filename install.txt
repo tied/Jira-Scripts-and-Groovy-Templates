@@ -19,7 +19,6 @@ createdb --owner jirauser --encoding utf8 jiradb
 apt-get install letsencrypt
 letsencrypt certonly --webroot --webroot-path=/var/www/html/ -d dc.jira-training.com
 
-
 ########### Java Oracle installation on Ubuntu
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
