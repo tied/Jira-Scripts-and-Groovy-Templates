@@ -15,6 +15,11 @@ su - postgres
 createuser -S -d -r -P -E jirauser
 createdb --owner jirauser --encoding utf8 jiradb
 
+######### Confluence Admin password reset - Postgress
+\connect confluence
+select * from cwd_user where user_name='admin';
+update cwd_user set credential='uQieO/1CGMUIXXftw3ynrsaYLShI+GTcPS4LdUGWbIusFvHPfUzD7CZvms6yMMvA8I7FViHVEqr6Mj4pCLKAFQ==' where user_name='XXXX';
+
 ######### Let's Encrypt
 apt-get install letsencrypt
 letsencrypt certonly --webroot --webroot-path=/var/www/html/ -d dc.jira-training.com
