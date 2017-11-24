@@ -14,6 +14,7 @@ createdb --owner confluenceuser --encoding utf8 confluence
 su - postgres
 createuser -S -d -r -P -E jirauser
 createdb --owner jirauser --encoding utf8 jiradb
+psql dbname < infile
 
 ######### Confluence Admin password reset to 'sphere' - Postgress
 \connect confluence
