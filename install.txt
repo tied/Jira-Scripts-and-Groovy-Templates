@@ -39,3 +39,6 @@ sudo apt-get install oracle-java8-installer
 
 ########## Safe mode in Jira
 ./start-jira.sh --disable-all-addons --disable addons=com.atlassian.test.plugin
+
+Jira Debug mode
+https://confluence.atlassian.com/adminjiraserver071/setting-properties-and-options-on-startup-802593108.html#Settingpropertiesandoptionsonstartup-startup_params 
