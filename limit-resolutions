@@ -1,0 +1,8 @@
+import com.atlassian.jira.component.ComponentAccessor
+import static com.atlassian.jira.issue.IssueFieldConstants.RESOLUTION
+
+def constantsManager = ComponentAccessor.constantsManager
+def allowedResolutions = constantsManager.resolutions.findAll
+
+{ it.name in ["Done","Out of Scope","Won't Do", "Cancelled", "Duplicate", "Not Relevant"] }
+getFieldById(RESOLUTION).setFieldOptions(allowedResolutions)
