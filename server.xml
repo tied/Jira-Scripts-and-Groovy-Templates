@@ -49,7 +49,7 @@
         Documentation at /docs/config/service.html
     -->
     <Service name="Catalina">
-	<Connector port="8080" maxThreads="150" minSpareThreads="25" connectionTimeout="20000" enableLookups="false" maxHttpHeaderSize="8192" protocol="HTTP/1.1" useBodyEncodingForURI="true" redirectPort="8443" acceptCount="100" disableUploadTimeout="true" proxyName="dev.jira-training.com" proxyPort="443" scheme="https" secure="true"/> 
+	<Connector port="8080" maxThreads="150" minSpareThreads="25" connectionTimeout="20000" enableLookups="false" maxHttpHeaderSize="8192" protocol="HTTP/1.1" useBodyEncodingForURI="true" redirectPort="8443" acceptCount="100" disableUploadTimeout="true" proxyName="jira.devopsit.co.uk" proxyPort="443" scheme="https" secure="true"/> 
 
         <Engine name="Catalina" defaultHost="localhost">
             <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true">
