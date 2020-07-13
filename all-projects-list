@@ -1,0 +1,31 @@
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.bc.projectroles.ProjectRoleService;
+import com.atlassian.jira.security.roles.ProjectRoleManager;
+import com.atlassian.jira.project.Project;
+import com.atlassian.jira.project.ProjectManager;
+import com.atlassian.jira.security.roles.ProjectRole;
+import com.atlassian.jira.security.roles.ProjectRoleActors;
+import com.atlassian.jira.util.ErrorCollection;
+import com.atlassian.jira.util.SimpleErrorCollection;
+import com.atlassian.jira.user.util.Users
+def sb = new StringBuffer()
+ProjectRoleService projectRoleService = (ProjectRoleService) ComponentAccessor.getComponentOfType(ProjectRoleService.class);
+ProjectRoleManager projectRoleManager = (ProjectRoleManager) ComponentAccessor.getComponentOfType(ProjectRoleManager.class);
+ProjectManager projectManager = ComponentAccessor.getProjectManager();
+ProjectRole administrator = projectRoleManager.getProjectRole("Administrators");
+ErrorCollection ec = new SimpleErrorCollection();
+//get all projects
+projectManager.getProjectObjects().each{
+sb.append("Project Admins for " + it.getName() + ": ")
+//get all project admins for that project
+ProjectRoleActors existingActors = projectRoleService.getProjectRoleActors(administrator,it,ec);
+if (existingActors != null){
+//get list of user names
+Set<Users> users = existingActors.getUsers();
+users.each { user->
+sb.append(user.getName() + ', ')
+}
+}
+sb.append("\n")
+}
+return sb.toString()
