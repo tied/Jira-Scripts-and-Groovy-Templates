@@ -1,0 +1,32 @@
+import com.atlassian.jira.component.ComponentAccessor
+
+def customFieldManager = ComponentAccessor.getCustomFieldManager()
+def optionsManager = ComponentAccessor.getOptionsManager()
+
+def formField = getFieldByName("Company Department") // *name* of your custom field
+def SourceField = getFieldByName("Operating System") // *source
+
+def customField = customFieldManager.getCustomFieldObject(formField.getFieldId())
+def config = customField.getRelevantConfig(getIssueContext())
+def options = optionsManager.getOptions(config)
+
+if (SourceField.value == 'Windows'){
+def optionsMap = options.findAll {
+    it.value in ["Demo 123", "abc 123"] // list of options you want to show
+}.collectEntries {
+    [
+        (it.optionId.toString()) : it.value
+    ]
+}
+formField.setFieldOptions(optionsMap)}
+
+else if (SourceField.value == 'Linux')
+{
+  def optionsMap = options.findAll {
+    it.value in ["HR Section", "IT Section"] // list of options you want to show
+}.collectEntries {
+    [
+        (it.optionId.toString()) : it.value
+    ]
+}
+formField.setFieldOptions(optionsMap)}  
