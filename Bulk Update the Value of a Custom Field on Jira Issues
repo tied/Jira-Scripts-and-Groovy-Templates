@@ -1,0 +1,37 @@
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.ModifiedValue
+import com.atlassian.jira.issue.search.SearchProvider
+import com.atlassian.jira.issue.util.DefaultIssueChangeHolder
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.issue.search.SearchQuery
+
+// Issues returned from that JQL will get altered
+final searchQuery = "project = TEST"
+
+// The name of the custom field to alter
+final customFieldName = "TextFieldA"
+
+// The new value to set
+final newValue = "Love Groovy"
+
+// Get the custom field
+def customField = ComponentAccessor.customFieldManager.customFieldObjects.findByName(customFieldName)
+assert customField : "Could not find custom field with name ${customFieldName}"
+
+// Get some components
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+def searchProvider = ComponentAccessor.getComponent(SearchProvider)
+def issueManager = ComponentAccessor.issueManager
+def user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+
+// Perform the JQL search
+def query = jqlQueryParser.parseQuery(searchQuery)
+def searchResults = searchProvider.search(SearchQuery.create(query, user), PagerFilter.unlimitedFilter)
+
+// Iterate all results to update each issue
+searchResults.results.each { documentIssue ->
+    def key = documentIssue.document.fields.find { it.name() == "key" }.stringValue()
+    def issue = issueManager.getIssueObject(key)
+    customField.updateValue(null, issue, new ModifiedValue(issue.getCustomFieldValue(customField), newValue), new DefaultIssueChangeHolder())
+}
