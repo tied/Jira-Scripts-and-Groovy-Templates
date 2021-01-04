@@ -1,0 +1,19 @@
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.fields.screen.*
+
+def fieldScreenManager = ComponentAccessor.getFieldScreenManager()
+def fieldScreens = fieldScreenManager.getFieldScreens()
+def html = ""
+
+fieldScreens.each { FieldScreen fieldScreen ->
+ def tabs = fieldScreen.getTabs()
+ html = html + "<h1>" + fieldScreen.name + "</h1>"
+ tabs.each { FieldScreenTab tab ->
+ html = html + "<h2>" + tab.name + "</h2>"
+ def items = tab.getFieldScreenLayoutItems()
+ items.each { FieldScreenLayoutItem item ->
+ if (item.getOrderableField()) html = html + "<p>" + item.getOrderableField().name + "</p>"
+ }
+ }
+}
+return html
