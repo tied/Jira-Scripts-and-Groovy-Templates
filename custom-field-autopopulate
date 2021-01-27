@@ -1,0 +1,16 @@
+// This is Script Runner Scripted Field so it can pull information for a field based on other field
+import com.atlassian.jira.component.ComponentAccessor
+
+def issueManager = ComponentAccessor.getIssueManager()
+def customFieldManager = ComponentAccessor.getCustomFieldManager()
+def cField = customFieldManager.getCustomFieldObject(11236)
+def cFieldValue = issue.getCustomFieldValue(cField).toString()
+
+//String cFieldValue = pProgramme.getValue()
+
+if (cFieldValue.contains("DASH")) {
+    return cFieldValue.replaceAll("\\[", "").replaceAll("\\]", "")
+}
+else {
+    return "null" + cFieldValue
+}
