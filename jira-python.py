@@ -1,8 +1,8 @@
 from jira import JIRA
 import re
 
-user = 'michal.kittay-jurdyga@nihp.nhs.uk'
-apikey = 'aCjaoWSWG5UqxPA2Lpnrs2f3McYhkI64qIYxRQ'
+user = 'michal USER'
+apikey = 'MY API KEY'
 server = 'https://jira.collabd2.test-and-trace.nhs.uk'
 options = {
  'server': server
