@@ -3,7 +3,7 @@ import re
 
 user = 'michal USER'
 apikey = 'MY API KEY'
-server = 'https://jira.collabd2.test-and-trace.nhs.uk'
+server = 'https://myjirahost.jira'
 options = {
  'server': server
 }
@@ -23,7 +23,7 @@ import re
 #props = jira.application_properties()
 #projects = jira.projects()
 
-options = {'server': 'https://jira.devopsit.co.uk'}
+options = {'server': 'https://myjirahost.jira'}
 jira = JIRA(options, basic_auth=('admin', 'PASS'))
 size = 100
 initial = 0
