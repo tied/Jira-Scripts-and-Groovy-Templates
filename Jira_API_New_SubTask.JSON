@@ -1,0 +1,18 @@
+{
+"fields": {
+    "project": {
+    "key": "SDD"
+     },
+    "summary": "New Sub Task Test",
+    "issuetype": {
+    "name": "Sub-task"
+     },
+     "parent":
+        {
+            "key": "SDD-76"
+        },
+
+     "customfield_10203": "sdd/getithelp",
+     "description" : "Demo mike text here",
+     "assignee": { "name": "admin005"}
+}}
