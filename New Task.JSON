@@ -1,0 +1,14 @@
+{
+"fields": {
+    "project": {
+    "key": "SDD"
+     },
+    "summary": "New Task Test",
+    "issuetype": {
+    "name": "Task"
+     },
+     "customfield_10203": "sdd/getithelp",
+     "description" : "Demo mike text here",
+     "customfield_10401": "Joiner",
+     "assignee": { "name": "XXX"}
+}}
